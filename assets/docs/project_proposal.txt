@@ -1,0 +1,15 @@
+Team Members: Luke Renner (lrenner2) and Erdinc Ozturk (eozturk)
+Project Idea: Our idea is to develop a javascript, web-based Mancala game. It will be a one-person game versus an automated player. We will use an std::vector to represent the board and we want to develop an algorithm that determines the best possible move for the computer-player to make. This game will involve multiple steps and elements of learning. Neither one of us is super versed in Javascript, so we will take some time to get comfortable with the language. We will then also spend time developing the interface and making it look good. Additionally, developing the computer-player will take some additional time and effort to get it to a level that we want it to be. 
+
+Core Goals:
+Design a Javascript website 
+Develop the graphical interface
+Implement a user controlled player
+Implement a computer player 
+
+Stretch Goals:
+Improving the computer player with a more advanced algorithm that best determines the best move to make. 
+Designing a mancala board by using Inkspace.
+
+Overall we feel as if this is a project that will stretch us in some ways while also providing some unique ways to use skills we have learned, including various data structures and algorithms. 
+
