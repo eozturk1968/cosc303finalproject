@@ -1,0 +1,14 @@
+body 
+{
+    background: black;
+}
+
+#board
+{
+    height: 400px;
+    width: 800px;
+    margin: auto;
+    margin-top: 150px;
+    background-image:url("../assets/images/background.svg");
+    background-size: cover;
+}
