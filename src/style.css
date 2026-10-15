@@ -1,7 +1,26 @@
-
 body 
 {
     background: black;
+}
+
+#start
+{
+    margin-left: 700px;
+    border: none;
+    cursor: pointer;
+}
+
+#easy 
+{
+    visibility: hidden;
+}
+#med
+{
+    visibility: hidden;
+}
+#diff
+{
+    visibility: hidden;
 }
 
 #board
@@ -17,21 +36,83 @@ body
 #element1
 {
     position:absolute;
-    margin-left: 120px;
-    margin-top: 7%;
+    padding-top: 115px;
+    padding-left: 120px;
 }
 
 #element2
 {
     position:absolute;
-    margin-left: 230px;
-    margin-top: 7%;
+    padding-top: 115px;
+    padding-left: 230px;
 }
 
 #element3
 {
     position:absolute;
-    margin-left: 340px;
-    margin-top: 7%;
+    padding-top: 115px;
+    padding-left: 340px;
 }
 
+#element4
+{
+    position:absolute;
+    padding-top: 115px;
+    padding-left: 440px;
+}
+
+#element5
+{
+    position:absolute;
+    padding-top: 115px;
+    padding-left: 540px;
+}
+
+#element6
+{
+    position:absolute;
+    padding-top: 115px;
+    padding-left: 650px;
+}
+
+#element7
+{
+    position:absolute;
+    padding-top: 220px;
+    padding-left: 120px;
+}
+
+#element8
+{
+    position:absolute;
+    padding-top: 220px;
+    padding-left: 230px;
+}
+
+#element9
+{
+    position:absolute;
+    padding-top: 220px;
+    padding-left: 340px;
+}
+
+#element10
+{
+    position:absolute;
+    padding-top: 220px;
+    padding-left: 440px;
+}
+
+#element11
+{
+    position:absolute;
+    padding-top: 220px;
+    padding-left: 540px;
+}
+
+#element12
+{
+    position:absolute;
+    padding-top: 220px;
+    padding-left: 650px;
+}
