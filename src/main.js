@@ -1,3 +1,6 @@
+//Global variables
+let info;
+
 //GamePlay Function 
 function startGame()
 {
@@ -112,7 +115,13 @@ function startGame()
         img.width = '15';
         el12.appendChild(img);
     }
+}
 
+//Accept user input of which circle to move and store it in global variable (that can be access anywhere), info.
+function getData()
+{
+    let data = document.getElementById("moveBox");
+    info = data.value;
 }
 
 //Hide start button after it is pressed.
@@ -127,9 +136,6 @@ but.addEventListener('click', () =>
     modes2.style.visibility = 'visible';
     modes3.style.visibility = 'visible';
 })
-
-
-
 
 
 

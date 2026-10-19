@@ -33,6 +33,13 @@ body
     background-size: cover;
 }
 
+#input 
+{
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 740px;
+}
+
 #element1
 {
     position:absolute;
