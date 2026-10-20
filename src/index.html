@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Mancala</title>
+    <title>CS303 Mancala</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/circle.svg">
 </head>
 <body>
     <div id="board">
-        <!--Twelve elements for the twelve holes. -->
+        <!--Twelve elements for the twelve holes and two scoring regions -->
+        <div id="scoreRegion1"></div>
         <div id="element1"></div>
         <div id="element2"></div>
         <div id="element3"></div>
@@ -21,15 +23,17 @@
         <div id="element10"></div>
         <div id="element11"></div>
         <div id="element12"></div>
+        <div id="scoreRegion2"></div>
     </div>
-    <button id = "start" onclick="startGame()">Start</button>
-    <button id = "easy">Easy</button>
+    <button id = "start" onclick="setTiles()">Start</button>
+    <button id = "easy" onclick="gamePlay()">Easy</button>
     <button id = "med">Medium</button>
     <button id = "diff">Difficult</button>
     <div id="input">
         <input id="moveBox" type="text" placeholder="Box you want to move">
         <button onclick="getData()">Enter</button>
     </div>
+    <button id = "restart" onclick="window.location.reload()">Restart</button>
     <script src="main.js"></script>
 </body>
 </html>

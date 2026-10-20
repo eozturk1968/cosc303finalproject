@@ -1,14 +1,17 @@
 //Global variables
 let info;
+let nums = [4,4,4,4,4,4,4,4,4,4,4,4];
+let scoreRegion = [0,0];
 
-//GamePlay Function 
-function startGame()
+//Function to set number of tiles based on nums array.
+function setTiles()
 {
-    const nums = [4,4,4,4,4,4,4,4,4,4,4,4];
     //Make sure pieces are in place
     //This 4 in the loop can later be changed to how many elements is to be stored in that hole.
     // We can keep track of that with an array (board) that stores how many elements should be in each hole. That can then be printed accordingly.
     const el1 = document.getElementById('element1');
+    //This line ensures that the previous printed images are first removed, before reprinting in order to ensure duplicates are not printed. 
+    el1.innerHTML = "";
     for(let i = 0; i < nums[0]; i++)
     {
         const img = document.createElement('img');
@@ -18,6 +21,7 @@ function startGame()
     }
 
     const el2 = document.getElementById('element2');
+    el2.innerHTML = "";
     for(let i = 0; i < nums[1]; i++)
     {
         const img = document.createElement('img');
@@ -27,6 +31,7 @@ function startGame()
     }
 
     const el3 = document.getElementById('element3');
+    el3.innerHTML = "";
     for(let i = 0; i < nums[2]; i++)
     {
         const img = document.createElement('img');
@@ -36,6 +41,7 @@ function startGame()
     }
 
     const el4 = document.getElementById('element4');
+    el4.innerHTML = "";
     for(let i = 0; i < nums[3]; i++)
     {
         const img = document.createElement('img');
@@ -45,6 +51,7 @@ function startGame()
     }
 
     const el5 = document.getElementById('element5');
+    el5.innerHTML = "";
     for(let i = 0; i < nums[4]; i++)
     {
         const img = document.createElement('img');
@@ -54,6 +61,7 @@ function startGame()
     }
 
     const el6 = document.getElementById('element6');
+    el6.innerHTML = "";
     for(let i = 0; i < nums[5]; i++)
     {
         const img = document.createElement('img');
@@ -63,6 +71,7 @@ function startGame()
     }
 
     const el7 = document.getElementById('element7');
+    el7.innerHTML = "";
     for(let i = 0; i < nums[6]; i++)
     {
         const img = document.createElement('img');
@@ -72,6 +81,7 @@ function startGame()
     }
 
     const el8 = document.getElementById('element8');
+    el8.innerHTML = "";
     for(let i = 0; i < nums[7]; i++)
     {
         const img = document.createElement('img');
@@ -81,6 +91,7 @@ function startGame()
     }
 
     const el9 = document.getElementById('element9');
+    el9.innerHTML = "";
     for(let i = 0; i < nums[8]; i++)
     {
         const img = document.createElement('img');
@@ -90,6 +101,7 @@ function startGame()
     }
 
     const el10 = document.getElementById('element10');
+    el10.innerHTML = "";
     for(let i = 0; i < nums[9]; i++)
     {
         const img = document.createElement('img');
@@ -99,6 +111,7 @@ function startGame()
     }
 
     const el11 = document.getElementById('element11');
+    el11.innerHTML = "";
     for(let i = 0; i < nums[10]; i++)
     {
         const img = document.createElement('img');
@@ -108,6 +121,7 @@ function startGame()
     }
 
     const el12 = document.getElementById('element12');
+    el12.innerHTML = "";
     for(let i = 0; i < nums[11]; i++)
     {
         const img = document.createElement('img');
@@ -115,27 +129,63 @@ function startGame()
         img.width = '15';
         el12.appendChild(img);
     }
+
+    const score1 = document.getElementById('scoreRegion1');
+    score1.innerHTML = "";
+    for(let i = 0; i < scoreRegion[0]; i++)
+    {
+        const img = document.createElement('img');
+        img.src = '../assets/images/circle.svg';
+        img.width = '15';
+        score1.appendChild(img);
+    }
+
+    const score2 = document.getElementById('scoreRegion2');
+    score2.innerHTML = "";
+    for(let i = 0; i < scoreRegion[0]; i++)
+    {
+        const img = document.createElement('img');
+        img.src = '../assets/images/circle.svg';
+        img.width = '15';
+        score2.appendChild(img);
+    }
 }
 
 //Accept user input of which circle to move and store it in global variable (that can be access anywhere), info.
+
 function getData()
 {
     let data = document.getElementById("moveBox");
     info = data.value;
+    document.getElementById("moveBox").value = '';
 }
 
-//Hide start button after it is pressed.
+//Main function that runs game. 
+function gamePlay()
+{   
+    //Need to add a conditional to be able to terminate gameplay. 
+
+    //Let user move first. Get user entry with getData() function from the textbox.
+    //Move pieces accordingly by editing nums and scoreRegion. Reprint with setTiles() function. 
+    //Run computer player.
+    //Move pieces and reprint again. 
+
+    //Run through this loop until the base condition is met and winner can be declared.
+}
+
+//Hide start button after it is pressed and show other buttons.
 var but = document.getElementById("start");
 but.addEventListener('click', () => 
 {
     but.style.visibility = 'hidden';
     const modes = document.getElementById("easy");
     const modes2 = document.getElementById("med");
-    const modes3 = document.getElementById("diff")
+    const modes3 = document.getElementById("diff");
+    const input1 = document.getElementById("input");
+    const rest = document.getElementById("restart");
     modes.style.visibility = 'visible';
     modes2.style.visibility = 'visible';
     modes3.style.visibility = 'visible';
+    input1.style.visibility = 'visible';
+    rest.style.visibility = 'visible';
 })
-
-
-
