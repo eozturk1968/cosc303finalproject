@@ -1,0 +1,9 @@
+[40 pts]*[1/20] = 2 pts per hour
+
++4  Comfortable with JavaScript
++2  Comfortable with Game
++20 Develop function for Computer Player
++8  Utilize function for Computer Player to make logical moves
++6  Integrate Computer Player into pre-existing game mechanics
+
++?  Computer Player difficulty levels, improved graphics, sound effects and animation
