@@ -31,60 +31,54 @@ export function score(mv, board) {
     // Begin playing (Depth = 1)
     tmp_board[mv] = 0;
     for (let i = 0; i < num_stones; i++) {
+
         let cur_pos = (mv + i + 1) % tmp_board.length;
-        tmp_board[cur_pos]++;
         cur_num_stones--;
 
-        // Standard stone logic
+        // Intermediate stones dropped 
         if (cur_num_stones > 0) {
 
-            // Stone in AI pit
             if (cur_pos < goal_pos) {
-                // Do nothing for now--only look at current move
             }
-
-            // Stone in opponent pit
             else if (cur_pos > goal_pos && cur_pos < opp_goal_pos) {
                 score -= 1;
             }
-
-            // Stone in AI goal
             else if (cur_pos == goal_pos) {
                 score += 4;
             }
-
-            // Stone in opponent goal
             else if (cur_pos == opp_goal_pos) {
                 score -= 4;
             }
 
         }
 
-        // Final stone logic
+        // Final stone dropped
         else {
-
-            // Stone ends in AI pit
+            
+            // Extra Turn Rule
             if (cur_pos == goal_pos) score += 7;
 
-            // Stone ends in empty slot
+            // Capture Rule
             else if (tmp_board[cur_pos] == 0 && cur_pos < goal_pos) {
                 let opp_pos = cur_pos + (tmp_board.length - 2) - (cur_pos * 2);
                 score += tmp_board[opp_pos] * 3;
             }
-
-            // Stone ends elsewhere
             else {}
         }
+
+        // Add stone to new position
+        tmp_board[cur_pos]++;
 
     }
     return score;
 }
 
+// Test function
 export function selectBestMove(board) {
     
     const goal_pos = (board.length / 2) - 1;
     let max = 0;
-    let mv  = 0;
+    let mv  = null;
 
     let valid_moves = [];
     for (let i = 0; i < goal_pos; i++) {
