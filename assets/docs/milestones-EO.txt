@@ -1,0 +1,11 @@
+[40 pts]*[1/20] = 2 pts per hour
+
++2  Comfortable with JavaScript
++2  Comfortable with Mancala rules (sowing, captures, extra turns, end game)
++10 Develop core game logic (board state, valid moves, sowing, captures, extra turn, game over, winner)
++4  Test suite for game logic (node test_mancala.js)
++10 Build playable board in the browser (HTML/CSS pits + stores, click a pit to move)
++6  Turn display, score display, game-over / winner screen, restart button
++6  Expose clean API (move, isValidMove, board, current) so Computer Player can plug in
+
++?  Two-player vs computer mode select, move highlighting, seed animation
