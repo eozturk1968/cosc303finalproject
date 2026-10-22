@@ -1,0 +1,10 @@
+Final Project Milestone (LR)
+
+1) Get comfortable with JavaScript - Perform basic HTML/CSS/JavaScript set up of the website (10PT)
+2) Game backend, implement data structures for pieces and set up moveability of pieces. Essentially start designing gameplay.(10PT)
+3) Computer play -> collaborate on this, as it is the most challenging aspect of the project. Will need to develop, different difficulty levels that automatically 
+choose moves.(20PT)
+
+
+
+
