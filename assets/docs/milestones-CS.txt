@@ -7,3 +7,30 @@
 +6  Integrate Computer Player into pre-existing game mechanics
 
 +?  Computer Player difficulty levels, improved graphics, sound effects and animation
+
+Progress:
+10/22/26
+- 1    hour understanding syntax of javascript
+- 1    hour of understanding rules + strategy of mancala
+- 0.75 hours strategizing in code
+- 1.5  hours implementing AI logic in code
+- 0.75 hours implementing test function + test cases for AI
+- Total: 5 hours
+
+- Summary -
+- Code Contribution: ai.js, ai_test.js -> created + pushed by me 
+- ai.js implements a basic AI algorithm for Mancala, running at depth 1 (current turn alone)
+- ai_test.js uses a test function from ai.js and tests 3 different test cases (successfully)
+- Located at ../../src (develop function for computer player)
+
+- Reflection + Steps -
+- ai.js function went well. not much debugging involved
+- Using multiple files with javascript was a challenge, but figured it out
+- The biggest thing that remains is trying to optimize the AI. I think I want to try
+  to add some Machine Learning strategy to this to adjust the weights. Also make the 
+  function depth 2 (very useful for more difficult AIs)
+- The other that that needs to be completed is a wrapper function. I currently am unsure how
+  the gameboard is going to be sent to me. However it is, I need to manipulate it to work
+  smoothly with the ai 'score' function. This shouldn't be too hard.
+
+- Repo: https://github.com/eozturk1968/cosc303finalproject/tree/main/src 
