@@ -142,7 +142,7 @@ function setTiles()
 
     const score2 = document.getElementById('scoreRegion2');
     score2.innerHTML = "";
-    for(let i = 0; i < scoreRegion[0]; i++)
+    for(let i = 0; i < scoreRegion[1]; i++)
     {
         const img = document.createElement('img');
         img.src = '../assets/images/circle.svg';
@@ -152,7 +152,6 @@ function setTiles()
 }
 
 //Accept user input of which circle to move and store it in global variable (that can be access anywhere), info.
-
 function getData()
 {
     let data = document.getElementById("moveBox");
@@ -170,7 +169,42 @@ function gamePlay()
     //Run computer player.
     //Move pieces and reprint again. 
 
-    //Run through this loop until the base condition is met and winner can be declared.
+    //Need to implement check to decide if gameplay is over or not. 
+
+    //Implement user gameplay and interaction
+
+    getData();
+    while(info > 5 || info < 0)
+    {
+        alert("Invalid move. Please reenter a number within the range of 0 - 5!")
+        getData();
+    }
+    nums[info]--;
+    let temp = info;
+    let area = 1;
+    //Replace tiles as they should be.
+    for(let i = 0; i < nums[info] + 1; i++)
+    {
+        if(temp == 5 && area == 1)
+        {
+            scoreRegion[1] += 1;
+            area = 0;
+        }
+        else
+        {
+            temp++;
+            area = 1;
+            nums[temp] += 1;
+        }
+
+        if(i == nums[info] && area == 0)
+        {
+            alert("User goes again! Please renter next move");
+            //Skip AI since user is going again.
+        }
+    }
+    setTiles();
+    //Run AI Move Next, then lead user to move again. 
 }
 
 //Hide start button after it is pressed and show other buttons.
@@ -189,3 +223,16 @@ but.addEventListener('click', () =>
     input1.style.visibility = 'visible';
     rest.style.visibility = 'visible';
 })
+
+
+//Check enter key to triger user move box. 
+var enterBut = document.getElementById("moveBox");
+enterBut.addEventListener("keypress", function(following)
+{
+    if(following.key === "Enter")
+    {
+        following.preventDefault();
+        document.getElementById("enterButton").click();
+    }
+});
+
