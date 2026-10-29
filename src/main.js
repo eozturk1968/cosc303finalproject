@@ -173,38 +173,57 @@ function gamePlay()
 
     //Implement user gameplay and interaction
 
+    if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
+    {
+        alert("Your pockets are empty! Opponent now places theirs in their own region.")
+        for(let i = 0; i < 6; i++)
+        {
+            scoreRegion += nums[i];
+            nums[i] == 0;
+        }
+        setTiles();
+    }
+
+
     getData();
-    while(info > 5 || info < 0)
+    while(info > 5 || info < 0 || nums[info] == 0)
     {
         alert("Invalid move. Please reenter a number within the range of 0 - 5!")
         getData();
     }
-    nums[info]--;
     let temp = info;
     let area = 1;
+    let total = nums[info];
     //Replace tiles as they should be.
-    for(let i = 0; i < nums[info] + 1; i++)
+    for(let i = 0; i < total; i++)
     {
         if(temp == 5 && area == 1)
         {
             scoreRegion[1] += 1;
             area = 0;
+            nums[info]--;
         }
         else
         {
             temp++;
             area = 1;
             nums[temp] += 1;
+            nums[info]--;
         }
 
-        if(i == nums[info] && area == 0)
+        if(i == total-1 && area == 0)
         {
-            alert("User goes again! Please renter next move");
+            setTiles(); 
+            alert("User goes again! Please renter next move.");
             //Skip AI since user is going again.
         }
+
+        else
+        {
+            setTiles(); 
+            //call AI to make move here.
+        }
     }
-    setTiles();
-    //Run AI Move Next, then lead user to move again. 
 }
 
 //Hide start button after it is pressed and show other buttons.
@@ -223,7 +242,6 @@ but.addEventListener('click', () =>
     input1.style.visibility = 'visible';
     rest.style.visibility = 'visible';
 })
-
 
 //Check enter key to triger user move box. 
 var enterBut = document.getElementById("moveBox");

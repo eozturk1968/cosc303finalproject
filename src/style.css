@@ -1,6 +1,7 @@
 body 
 {
-    background: black;
+    background: #2A7B9B;
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 81%, rgba(237, 221, 83, 1) 100%);
 }
 
 #start
@@ -8,29 +9,58 @@ body
     margin-left: 700px;
     border: none;
     cursor: pointer;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 #easy 
 {
+    border: none;
+    cursor: pointer;
     visibility: hidden;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
 }
+
 
 #med
 {
+    border: none;
+    cursor: pointer;
     visibility: hidden;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 #diff
 {
+    border: none;
+    cursor: pointer;
     visibility: hidden;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 #restart
 {
+    border: none;
+    cursor: pointer;
     visibility: hidden;
     position: absolute;
     margin-top: 60px;
     margin-left: 200px;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 #board
@@ -49,6 +79,26 @@ body
     position: absolute;
     margin-top: 50px;
     margin-left: 740px;
+}
+
+#moveBox
+{
+    border: none;
+    cursor: pointer;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+#enterButton
+{
+    border: none;
+    cursor: pointer;
+    background-color: aliceblue;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 20px;
 }
 
 #element1
@@ -91,6 +141,7 @@ body
     position:absolute;
     padding-top: 115px;
     padding-left: 650px;
+    block-size: 20px;
 }
 
 #element7
