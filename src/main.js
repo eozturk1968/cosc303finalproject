@@ -162,8 +162,6 @@ function getData()
 //Main function that runs game. 
 function gamePlay()
 {   
-    //Need to add a conditional to be able to terminate gameplay. 
-
     //Let user move first. Get user entry with getData() function from the textbox.
     //Move pieces accordingly by editing nums and scoreRegion. Reprint with setTiles() function. 
     //Run computer player.
@@ -172,18 +170,6 @@ function gamePlay()
     //Need to implement check to decide if gameplay is over or not. 
 
     //Implement user gameplay and interaction
-
-    if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
-    {
-        alert("Your pockets are empty! Opponent now places theirs in their own region.")
-        for(let i = 0; i < 6; i++)
-        {
-            scoreRegion += nums[i];
-            nums[i] == 0;
-        }
-        setTiles();
-    }
-
 
     getData();
     while(info > 5 || info < 0 || nums[info] == 0)
@@ -218,11 +204,34 @@ function gamePlay()
             //Skip AI since user is going again.
         }
 
-        else
+        //Steal opponents when finishing in an empty store.
+        else if(i == total-1 && nums[temp] == 1 && nums[temp+6] > 0)
+        {
+            scoreRegion[1] += nums[temp] + nums[temp+6];
+            nums[temp] = 0;
+            nums[temp+6] = 0;
+            setTiles();
+
+            //call AI to make move here.
+        }
+
+        else if(i == total-1)
         {
             setTiles(); 
             //call AI to make move here.
         }
+    }
+
+    if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
+    {
+        alert("Your pockets are empty! Opponent now places theirs in their own region.")
+        for(let i = 6; i < 12; i++)
+        {
+            scoreRegion[0] += nums[i];
+            nums[i] = 0;
+        }
+        setTiles();
+        alert("Game is now over. Let's see who wins!")
     }
 }
 
@@ -234,13 +243,51 @@ but.addEventListener('click', () =>
     const modes = document.getElementById("easy");
     const modes2 = document.getElementById("med");
     const modes3 = document.getElementById("diff");
-    const input1 = document.getElementById("input");
-    const rest = document.getElementById("restart");
     modes.style.visibility = 'visible';
     modes2.style.visibility = 'visible';
     modes3.style.visibility = 'visible';
+})
+
+var but2 = document.getElementById("easy");
+but2.addEventListener('click', () => 
+{
+    but2.style.visibility = 'hidden';
+    const input1 = document.getElementById("input");
+    const rest = document.getElementById("restart");
+    const modes2 = document.getElementById("med");
+    const modes3 = document.getElementById("diff");
     input1.style.visibility = 'visible';
     rest.style.visibility = 'visible';
+    modes2.style.visibility = 'hidden';
+    modes3.style.visibility = 'hidden';
+})
+
+var but3 = document.getElementById("med");
+but3.addEventListener('click', () => 
+{
+    but3.style.visibility = 'hidden';
+    const input1 = document.getElementById("input");
+    const rest = document.getElementById("restart");
+    const modes2 = document.getElementById("easy");
+    const modes3 = document.getElementById("diff");
+    input1.style.visibility = 'visible';
+    rest.style.visibility = 'visible';
+    modes2.style.visibility = 'hidden';
+    modes3.style.visibility = 'hidden';
+})
+
+var but4 = document.getElementById("diff");
+but4.addEventListener('click', () => 
+{
+    but4.style.visibility = 'hidden';
+    const input1 = document.getElementById("input");
+    const rest = document.getElementById("restart");
+    const modes2 = document.getElementById("easy");
+    const modes3 = document.getElementById("med");
+    input1.style.visibility = 'visible';
+    rest.style.visibility = 'visible';
+    modes2.style.visibility = 'hidden';
+    modes3.style.visibility = 'hidden';
 })
 
 //Check enter key to triger user move box. 
