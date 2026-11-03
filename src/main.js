@@ -172,9 +172,9 @@ function gamePlay()
     //Implement user gameplay and interaction
 
     getData();
-    while(info > 5 || info < 0 || nums[info] == 0)
+    while(info > 5 || info < 0 || nums[info] == 0 || isNaN(info))
     {
-        alert("Invalid move. Please reenter a number within the range of 0 - 5!")
+        alert("Invalid move. Please reenter a number within the range of 0 - 5!");
         getData();
     }
     let temp = info;
@@ -300,4 +300,3 @@ enterBut.addEventListener("keypress", function(following)
         document.getElementById("enterButton").click();
     }
 });
-
