@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <title>CS303 Mancala</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/circle.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Redaction+50:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="board">
@@ -26,14 +29,17 @@
         <div id="scoreRegion2"></div>
     </div>
     <button id = "start" onclick="setTiles()">Start</button>
-    <button id = "easy" class="mode">Easy</button>
-    <button id = "med" class="mode">Medium</button>
-    <button id = "diff" class="mode">Difficult</button>
+    <button id = "easy" onclick="eMode()" class="mode">Easy</button>
+    <button id = "med" onclick="mMode()" class="mode">Medium</button>
+    <button id = "diff" onclick="hMode()" class="mode">Difficult</button>
     <div id="input">
         <input id="moveBox" type="text" placeholder="Box you want to move">
         <button id="enterButton" onclick="gamePlay()">Enter</button>
     </div>
     <button id = "restart" onclick="window.location.reload()">Restart</button>
+    <div id="win">
+        <h1>Who won??</h1>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

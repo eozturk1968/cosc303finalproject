@@ -101,6 +101,15 @@ body
     padding: 20px;
 }
 
+#win 
+{
+    visibility: hidden;
+    margin-top: -500px;
+    margin-left: 500px;
+    font-family: "Redaction 50", serif;
+    font-size: 50px;
+}
+
 #element1
 {
     position:absolute;

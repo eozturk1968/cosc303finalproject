@@ -1,7 +1,9 @@
 //Global variables
-let info;
-let nums = [4,4,4,4,4,4,4,4,4,4,4,4];
-let scoreRegion = [0,0];
+let info; // User input variable on which pot they want to move
+let nums = [4,4,4,4,4,4,4,4,4,4,4,4]; //nums[0 - 5] = Player, nums[6 - 11] = AI
+let scoreRegion = [0,0]; //scoreRegion[0] = AI, scoreRegion[1] = Player
+let mode; //Difficulty mode. (Easy: 0, Medium: 1, Hard: 2)
+let winner; //Variable to store winner (0: AI, 1: Player);
 
 //Function to set number of tiles based on nums array.
 function setTiles()
@@ -159,6 +161,22 @@ function getData()
     document.getElementById("moveBox").value = '';
 }
 
+//Set difficulty mode
+function eMode()
+{
+    mode = 0;
+}
+
+function mMode()
+{
+    mode = 1;
+}
+
+function hMode()
+{
+    mode = 2;
+}
+
 //Main function that runs game. 
 function gamePlay()
 {   
@@ -231,8 +249,38 @@ function gamePlay()
             nums[i] = 0;
         }
         setTiles();
+        if(scoreRegion[0] > scoreRegion[1])
+            winner = 0;
+        else if(scoreRegion[1] > scoreRegion[0])
+            winner = 1;
         alert("Game is now over. Let's see who wins!")
+        gameWinner();
     }
+}
+
+//Make game winner visible
+function gameWinner()
+{
+    var t1 = document.getElementById("board");
+    var t2 = document.getElementById("input");
+    t1.style.visibility = 'hidden';
+    t2.style.visibility = 'hidden';
+
+    var t3 = document.getElementById("win");
+    var t4 = document.createElement("h2");
+    if(winner == 0)
+    {
+        const t5 = document.createTextNode("YOU LOST!");
+        t4.appendChild(t5);
+        t3.appendChild(t4);
+    }
+    else if(winner == 1)
+    {
+        const t5 = document.createTextNode("YOU WON!");
+        t4.appendChild(t5);
+        t3.appendChild(t4);
+    }
+    t3.style.visibility = 'visible';
 }
 
 //Hide start button after it is pressed and show other buttons.
