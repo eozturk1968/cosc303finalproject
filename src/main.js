@@ -223,11 +223,11 @@ function gamePlay()
         }
 
         //Steal opponents when finishing in an empty store.
-        else if(i == total-1 && nums[temp] == 1 && nums[temp+6] > 0)
+        else if(i == total-1 && nums[temp] == 1 && nums[11-temp] > 0)
         {
-            scoreRegion[1] += nums[temp] + nums[temp+6];
+            scoreRegion[1] += nums[temp] + nums[11-temp];
             nums[temp] = 0;
-            nums[temp+6] = 0;
+            nums[11-temp] = 0;
             setTiles();
 
             //call AI to make move here.
@@ -296,6 +296,7 @@ but.addEventListener('click', () =>
     modes3.style.visibility = 'visible';
 })
 
+//Hide easy button after it is pressed.
 var but2 = document.getElementById("easy");
 but2.addEventListener('click', () => 
 {
@@ -310,6 +311,7 @@ but2.addEventListener('click', () =>
     modes3.style.visibility = 'hidden';
 })
 
+//Hide medium button after it is pressed.
 var but3 = document.getElementById("med");
 but3.addEventListener('click', () => 
 {
@@ -324,6 +326,7 @@ but3.addEventListener('click', () =>
     modes3.style.visibility = 'hidden';
 })
 
+//Hide Difficult button after it is pressed.
 var but4 = document.getElementById("diff");
 but4.addEventListener('click', () => 
 {
