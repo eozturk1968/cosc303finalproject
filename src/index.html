@@ -14,12 +14,12 @@
     <div id="board">
         <!--Twelve elements for the twelve holes and two scoring regions -->
         <div id="scoreRegion1"></div>
-        <div id="element1"></div>
-        <div id="element2"></div>
-        <div id="element3"></div>
-        <div id="element4"></div>
-        <div id="element5"></div>
-        <div id="element6"></div>
+        <div id="element1" onclick="num()"></div>
+        <div id="element2" onclick="num2()"></div>
+        <div id="element3" onclick="num3()"></div>
+        <div id="element4"onclick="num4()"></div>
+        <div id="element5"onclick="num5()"></div>
+        <div id="element6"onclick="num6()"></div>
         <div id="element7"></div>
         <div id="element8"></div>
         <div id="element9"></div>
@@ -32,10 +32,6 @@
     <button id = "easy" onclick="eMode()" class="mode">Easy</button>
     <button id = "med" onclick="mMode()" class="mode">Medium</button>
     <button id = "diff" onclick="hMode()" class="mode">Difficult</button>
-    <div id="input">
-        <input id="moveBox" type="text" placeholder="Box you want to move">
-        <button id="enterButton" onclick="gamePlay()">Enter</button>
-    </div>
     <button id = "restart" onclick="window.location.reload()">Restart</button>
     <div id="win">
         <h1>Who won??</h1>

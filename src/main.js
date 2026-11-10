@@ -153,6 +153,7 @@ function setTiles()
     }
 }
 
+/*
 //Accept user input of which circle to move and store it in global variable (that can be access anywhere), info.
 function getData()
 {
@@ -160,7 +161,7 @@ function getData()
     info = data.value;
     document.getElementById("moveBox").value = '';
 }
-
+*/
 //Set difficulty mode
 function eMode()
 {
@@ -189,16 +190,11 @@ function gamePlay()
 
     //Implement user gameplay and interaction
 
-    getData();
-    while(info > 5 || info < 0 || nums[info] == 0 || isNaN(info))
-    {
-        alert("Invalid move. Please reenter a number within the range of 0 - 5!");
-        getData();
-    }
     let temp = info;
     let area = 1;
     let total = nums[info];
     //Replace tiles as they should be.
+    //Need to fix bug where user pit is properly skipped and stones are looped around. 
     for(let i = 0; i < total; i++)
     {
         if(temp == 5 && area == 1)
@@ -262,9 +258,7 @@ function gamePlay()
 function gameWinner()
 {
     var t1 = document.getElementById("board");
-    var t2 = document.getElementById("input");
     t1.style.visibility = 'hidden';
-    t2.style.visibility = 'hidden';
 
     var t3 = document.getElementById("win");
     var t4 = document.createElement("h2");
@@ -301,11 +295,9 @@ var but2 = document.getElementById("easy");
 but2.addEventListener('click', () => 
 {
     but2.style.visibility = 'hidden';
-    const input1 = document.getElementById("input");
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("med");
     const modes3 = document.getElementById("diff");
-    input1.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
@@ -316,11 +308,9 @@ var but3 = document.getElementById("med");
 but3.addEventListener('click', () => 
 {
     but3.style.visibility = 'hidden';
-    const input1 = document.getElementById("input");
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("easy");
     const modes3 = document.getElementById("diff");
-    input1.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
@@ -331,23 +321,48 @@ var but4 = document.getElementById("diff");
 but4.addEventListener('click', () => 
 {
     but4.style.visibility = 'hidden';
-    const input1 = document.getElementById("input");
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("easy");
     const modes3 = document.getElementById("med");
-    input1.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
 })
 
-//Check enter key to triger user move box. 
-var enterBut = document.getElementById("moveBox");
-enterBut.addEventListener("keypress", function(following)
+
+//Assign info with its correct value after user clicks desired pit.
+function num()
 {
-    if(following.key === "Enter")
-    {
-        following.preventDefault();
-        document.getElementById("enterButton").click();
-    }
-});
+    info = 0;
+    gamePlay();
+}
+
+function num2()
+{
+    info = 1;
+    gamePlay();
+}
+
+function num3()
+{
+    info = 2;
+    gamePlay();
+}
+
+function num4()
+{
+    info = 3;
+    gamePlay();
+}
+
+function num5()
+{
+    info = 4;
+    gamePlay();
+}
+
+function num6()
+{
+    info = 5;
+    gamePlay();
+}

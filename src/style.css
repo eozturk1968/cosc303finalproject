@@ -65,6 +65,7 @@ body
 
 #board
 {
+    position: relative;
     height: 500px;
     width: 1000px;
     margin: auto;
@@ -73,39 +74,15 @@ body
     background-size: cover;
 }
 
-#input 
-{
-    visibility: hidden;
-    position: absolute;
-    margin-top: -60px;
-    margin-left: 740px;
-}
 
-#moveBox
-{
-    border: none;
-    cursor: pointer;
-    background-color: aliceblue;
-    text-decoration: none;
-    border-radius: 4px;
-    padding: 20px;
-}
-
-#enterButton
-{
-    border: none;
-    cursor: pointer;
-    background-color: aliceblue;
-    text-decoration: none;
-    border-radius: 4px;
-    padding: 20px;
-}
 
 #win 
 {
+    position: absolute;
+    top: -20px;
+    left: 100px;
+    height: 200px;
     visibility: hidden;
-    margin-top: -500px;
-    margin-left: 500px;
     font-family: "Redaction 50", serif;
     font-size: 50px;
 }
@@ -113,113 +90,118 @@ body
 #element12
 {
     position:absolute;
-    padding-top: 140px;
-    padding-left: 145px;
+    top: 140px;
+    left: 145px;
     max-width: 90px;
 }
 
 #element11
 {
     position:absolute;
-    padding-top: 140px;
-    padding-left: 280px;
+    top: 140px;
+    left: 280px;
     max-width: 90px;
 }
 
 #element10
 {
     position:absolute;
-    padding-top: 140px;
-    padding-left: 410px;
+    top: 140px;
+    left: 410px;
     max-width: 90px;
 }
 
 #element9
 {
     position:absolute;
-    padding-top: 140px;
-    padding-left: 550px;
+    top: 140px;
+    left: 550px;
     max-width: 90px;
 }
 
 #element8
 {
     position:absolute;
-    padding-top: 140px;
-    padding-left: 680px;
+    top: 140px;
+    left: 680px;
     max-width: 90px;
 }
 
 #element7
 {
     position:absolute;
-    padding-top: 140px;
+    top: 140px;
     padding-left: 805px;
     max-width: 90px;
 }
 
+/*Claude helped me debug my positioning set up for the following elements in order to allow for the elements to be clickable. */
 #element1
 {
     position:absolute;
-    padding-top: 270px;
-    padding-left: 150px;
+    top: 270px;
+    left: 150px;
     max-width: 90px;
+    z-index: 1;
 }
 
 #element2
 {
     position:absolute;
-    padding-top: 270px;
-    padding-left: 280px;
+    top: 270px;
+    left: 280px;
     max-width: 90px;
+    z-index: 1;
 }
 
 #element3
 {
     position:absolute;
-    padding-top: 270px;
-    padding-left: 410px;
+    top: 270px;
+    left: 410px;
     max-width: 90px;
+    z-index: 1;
 }
 
 #element4
 {
     position:absolute;
-    padding-top: 270px;
-    padding-left: 550px;
+    top: 270px;
+    left: 550px;
     max-width: 90px;
+    z-index: 1;
 }
 
 #element5
 {
     position:absolute;
-    padding-top: 270px;
-    padding-left: 680px;
+    top: 270px;
+    left: 680px;
     max-width: 90px;
+    z-index: 1;
 }
 
 #element6
 {
     position:absolute;
-    padding-top: 270px;
-    padding-left: 805px;
+    top: 270px;
+    left: 805px;
     max-width: 90px;
+    z-index: 1;
 }
 
 #scoreRegion1
 {
     position: absolute;
-    padding-top: 150px;
-    padding-left: 40px;
-    top: 15%;
+    left: 40px;
+    top: 25%;
     max-width: 80px;
 }
 
 #scoreRegion2
 {
     position: absolute;
-    padding-top: 150px;
-    padding-left: 915px;
-    top: 15%;
+    left: 915px;
+    top: 25%;
     max-width: 80px;
 }
