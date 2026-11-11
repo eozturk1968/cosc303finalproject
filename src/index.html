@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>CS303 Mancala</title>
+    <title>COSC303 Mancala</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/circle.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +14,12 @@
     <div id="board">
         <!--Twelve elements for the twelve holes and two scoring regions -->
         <div id="scoreRegion1"></div>
-        <div id="element1" onclick="num()"></div>
-        <div id="element2" onclick="num2()"></div>
-        <div id="element3" onclick="num3()"></div>
-        <div id="element4"onclick="num4()"></div>
-        <div id="element5"onclick="num5()"></div>
-        <div id="element6"onclick="num6()"></div>
+        <div class="pcs" id="element1" onclick="num()"></div>
+        <div class="pcs" id="element2" onclick="num2()"></div>
+        <div class="pcs" id="element3" onclick="num3()"></div>
+        <div class="pcs" id="element4"onclick="num4()"></div>
+        <div class="pcs" id="element5"onclick="num5()"></div>
+        <div class="pcs" id="element6"onclick="num6()"></div>
         <div id="element7"></div>
         <div id="element8"></div>
         <div id="element9"></div>
@@ -34,7 +34,7 @@
     <button id = "diff" onclick="hMode()" class="mode">Difficult</button>
     <button id = "restart" onclick="window.location.reload()">Restart</button>
     <div id="win">
-        <h1>Who won??</h1>
+        <h1>RESULTS:</h1>
     </div>
     <script src="main.js"></script>
 </body>

@@ -8,9 +8,7 @@ let winner; //Variable to store winner (0: AI, 1: Player);
 //Function to set number of tiles based on nums array.
 function setTiles()
 {
-    //Make sure pieces are in place
-    //This 4 in the loop can later be changed to how many elements is to be stored in that hole.
-    // We can keep track of that with an array (board) that stores how many elements should be in each hole. That can then be printed accordingly.
+    //Print the number of stones based upon the stored value in nums. Do this for the 12 pits and 2 scoring regions. 
     const el1 = document.getElementById('element1');
     //This line ensures that the previous printed images are first removed, before reprinting in order to ensure duplicates are not printed. 
     el1.innerHTML = "";
@@ -153,16 +151,7 @@ function setTiles()
     }
 }
 
-/*
-//Accept user input of which circle to move and store it in global variable (that can be access anywhere), info.
-function getData()
-{
-    let data = document.getElementById("moveBox");
-    info = data.value;
-    document.getElementById("moveBox").value = '';
-}
-*/
-//Set difficulty mode
+//Set difficulty mode. 
 function eMode()
 {
     mode = 0;
@@ -194,27 +183,33 @@ function gamePlay()
     let area = 1;
     let total = nums[info];
     //Replace tiles as they should be.
-    //Need to fix bug where user pit is properly skipped and stones are looped around. 
     for(let i = 0; i < total; i++)
     {
-        if(temp == 5 && area == 1)
+        //If scoring region.
+        if(temp % 12 == 5 && area == 1)
         {
             scoreRegion[1] += 1;
             area = 0;
             nums[info]--;
         }
+        //Otherwise increment number of stones in pits.
         else
         {
             temp++;
             area = 1;
-            nums[temp] += 1;
+            nums[temp % 12] += 1;
             nums[info]--;
         }
 
+        //If user ends in their own pit they can go again.
         if(i == total-1 && area == 0)
         {
             setTiles(); 
-            alert("User goes again! Please renter next move.");
+            //This check ensures that the alert is not printed on the last turn when there are actually no more moves to be made.
+            if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
+                break;
+            else
+                alert("Go again! Please select next move.");
             //Skip AI since user is going again.
         }
 
@@ -229,6 +224,7 @@ function gamePlay()
             //call AI to make move here.
         }
 
+        //If the two other conditions are not met, still print the board and call AI. 
         else if(i == total-1)
         {
             setTiles(); 
@@ -236,6 +232,7 @@ function gamePlay()
         }
     }
 
+    //When game is over, count up stones and finish game. 
     if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
     {
         alert("Your pockets are empty! Opponent now places theirs in their own region.")
@@ -298,6 +295,8 @@ but2.addEventListener('click', () =>
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("med");
     const modes3 = document.getElementById("diff");
+    const brd = document.getElementById("board");
+    brd.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
@@ -311,6 +310,8 @@ but3.addEventListener('click', () =>
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("easy");
     const modes3 = document.getElementById("diff");
+    const brd = document.getElementById("board");
+    brd.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
@@ -324,6 +325,8 @@ but4.addEventListener('click', () =>
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("easy");
     const modes3 = document.getElementById("med");
+    const brd = document.getElementById("board");
+    brd.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
