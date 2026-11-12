@@ -28,14 +28,25 @@
         <div id="element12"></div>
         <div id="scoreRegion2"></div>
     </div>
+    <div id="trackScore">
+        <table>
+            <tr>
+                <th>Player</th>
+                <th>AI</th>
+            </tr>
+            <tr>
+                <td id="user"></td>
+                <td id="AI"></td>
+            </tr>
+        </table>
+    </div>
     <button id = "start" onclick="setTiles()">Start</button>
     <button id = "easy" onclick="eMode()" class="mode">Easy</button>
     <button id = "med" onclick="mMode()" class="mode">Medium</button>
     <button id = "diff" onclick="hMode()" class="mode">Difficult</button>
     <button id = "restart" onclick="window.location.reload()">Restart</button>
-    <div id="win">
-        <h1>RESULTS:</h1>
-    </div>
+    <button id = "again" onclick="keep()">Keep playing</button>
+    <div id="win"></div>
     <script src="main.js"></script>
 </body>
 </html>

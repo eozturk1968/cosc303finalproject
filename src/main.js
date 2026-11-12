@@ -5,6 +5,13 @@ let scoreRegion = [0,0]; //scoreRegion[0] = AI, scoreRegion[1] = Player
 let mode; //Difficulty mode. (Easy: 0, Medium: 1, Hard: 2)
 let winner; //Variable to store winner (0: AI, 1: Player);
 
+let userCount = 0; //Keep track of total number of wins.
+let AICount = 0; //Keep track of total number of wins.
+
+//Initialize table variables to whatever the counts are.
+document.querySelector("#user").innerHTML = userCount;
+document.querySelector("#AI").innerHTML = AICount;
+
 //Function to set number of tiles based on nums array.
 function setTiles()
 {
@@ -185,7 +192,7 @@ function gamePlay()
     //Replace tiles as they should be.
     for(let i = 0; i < total; i++)
     {
-        //If scoring region.
+        //If scoring region increment it.
         if(temp % 12 == 5 && area == 1)
         {
             scoreRegion[1] += 1;
@@ -228,6 +235,7 @@ function gamePlay()
         else if(i == total-1)
         {
             setTiles(); 
+
             //call AI to make move here.
         }
     }
@@ -243,9 +251,13 @@ function gamePlay()
         }
         setTiles();
         if(scoreRegion[0] > scoreRegion[1])
+        {
             winner = 0;
+        }
         else if(scoreRegion[1] > scoreRegion[0])
+        {
             winner = 1;
+        }
         alert("Game is now over. Let's see who wins!")
         gameWinner();
     }
@@ -258,20 +270,34 @@ function gameWinner()
     t1.style.visibility = 'hidden';
 
     var t3 = document.getElementById("win");
+    var t0 = document.createElement("h1");
     var t4 = document.createElement("h2");
+    var t5 = document.getElementById("again");
+    t3.innerHTML = "";
     if(winner == 0)
     {
+        AICount += 1;
+        document.querySelector("#AI").innerHTML = AICount;
         const t5 = document.createTextNode("YOU LOST!");
+        const t6 = document.createTextNode("RESULTS:");
+        t0.appendChild(t6);
         t4.appendChild(t5);
+        t3.appendChild(t0);
         t3.appendChild(t4);
     }
     else if(winner == 1)
     {
+        userCount += 1;
+        document.querySelector("#user").innerHTML = userCount;
+        const t6 = document.createTextNode("RESULTS:");
         const t5 = document.createTextNode("YOU WON!");
+        t0.appendChild(t6);
         t4.appendChild(t5);
+        t3.appendChild(t0);
         t3.appendChild(t4);
     }
     t3.style.visibility = 'visible';
+    t5.style.visibility = 'visible';
 }
 
 //Hide start button after it is pressed and show other buttons.
@@ -331,6 +357,25 @@ but4.addEventListener('click', () =>
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
 })
+
+//Function to restart game.
+function keep()
+{
+    nums = [4,4,4,4,4,4,4,4,4,4,4,4];
+    scoreRegion = [0,0];
+    setTiles();
+
+    var t1 = document.getElementById("win");
+    var t2 = document.getElementById("again");
+    const modes = document.getElementById("easy");
+    const modes2 = document.getElementById("med");
+    const modes3 = document.getElementById("diff");
+    t1.style.visibility = 'hidden';
+    t2.style.visibility = 'hidden';
+    modes.style.visibility = 'visible';
+    modes2.style.visibility = 'visible';
+    modes3.style.visibility = 'visible'; 
+}
 
 
 //Assign info with its correct value after user clicks desired pit.
