@@ -16,8 +16,10 @@ Progress:
 - 1.5  hours implementing AI logic in code
 - 0.75 hours implementing test function + test cases for AI
 - Total: 5 hours
+11/16/26
+- 2 hours adjusting ai.js file
 
-- Summary -
+- Summary (10/22/26) -
 - Code Contribution: ai.js, ai_test.js -> created + pushed by me 
 - ai.js implements a basic AI algorithm for Mancala, running at depth 1 (current turn alone)
 - ai_test.js uses a test function from ai.js and tests 3 different test cases (successfully)
@@ -32,5 +34,12 @@ Progress:
 - The other that that needs to be completed is a wrapper function. I currently am unsure how
   the gameboard is going to be sent to me. However it is, I need to manipulate it to work
   smoothly with the ai 'score' function. This shouldn't be too hard.
+
+- Summary (11/16/26) -
+- Changed up ai.js quite a bit
+- Cleaned up and simplified score function which compares a final and initial board state
+- Created a clean function to determine the best score of the possible moves
+- Working on minimax function for depth, which will create the various difficulties that the user can select
+
 
 - Repo: https://github.com/eozturk1968/cosc303finalproject/tree/main/src 
