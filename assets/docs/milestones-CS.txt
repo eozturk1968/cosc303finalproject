@@ -33,14 +33,16 @@ Progress:
 
 - 11/16/26
 - 2 hours adjusting ai.js file
-- Summary (11/16/26) -
+- Total: 7 hours
+- Summary (11/16/26)
 - Changed up ai.js quite a bit
 - Cleaned up and simplified score function which compares a final and initial board state
 - Created a clean function to determine the best score of the possible moves
 - Working on minimax function for depth, which will create the various difficulties that the user can select
 
 - 11/17/26
-- 2.5 hours adjusting ai.js, adding playable test thing (play.js)
+- 3 hours adjusting ai.js, adding playable test thing (play.js)
+- Total: 10 hours
 - functioning minimax ai heuristic function with various depths (1 = easy, 3 = medium, 5 = hard)
 - ideas now is to implement to frontend and ensure works properly
 - reach goals could be adding pruning to function to get even more depth for impossible mode
