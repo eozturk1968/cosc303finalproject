@@ -158,33 +158,15 @@ function setTiles()
     }
 }
 
-//Set difficulty mode. 
-function eMode()
-{
-    mode = 0;
-}
-
-function mMode()
-{
-    mode = 1;
-}
-
-function hMode()
-{
-    mode = 2;
-}
-
 //Main function that runs game. 
 function gamePlay()
 {   
     //Let user move first. Get user entry with getData() function from the textbox.
     //Move pieces accordingly by editing nums and scoreRegion. Reprint with setTiles() function. 
     //Run computer player.
-    //Move pieces and reprint again. 
+    //Move pieces and reprint again.
 
-    //Need to implement check to decide if gameplay is over or not. 
-
-    //Implement user gameplay and interaction
+    //TO-DO: Connect AI with this to allow AI to make move once user has gone.
 
     let temp = info;
     let area = 1;
@@ -211,7 +193,7 @@ function gamePlay()
         //If user ends in their own pit they can go again.
         if(i == total-1 && area == 0)
         {
-            setTiles(); 
+            setTimeout(setTiles, 200);  
             //This check ensures that the alert is not printed on the last turn when there are actually no more moves to be made.
             if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
                 break;
@@ -226,7 +208,7 @@ function gamePlay()
             scoreRegion[1] += nums[temp] + nums[11-temp];
             nums[temp] = 0;
             nums[11-temp] = 0;
-            setTiles();
+            setTimeout(setTiles, 200); 
 
             //call AI to make move here.
         }
@@ -234,8 +216,7 @@ function gamePlay()
         //If the two other conditions are not met, still print the board and call AI. 
         else if(i == total-1)
         {
-            setTiles(); 
-
+            setTimeout(setTiles, 200); 
             //call AI to make move here.
         }
     }
@@ -311,6 +292,8 @@ but.addEventListener('click', () =>
     modes.style.visibility = 'visible';
     modes2.style.visibility = 'visible';
     modes3.style.visibility = 'visible';
+    var t0 = document.getElementById("instructions");
+    t0.style.visibility = 'visible';
 })
 
 //Hide easy button after it is pressed.
@@ -318,14 +301,20 @@ var but2 = document.getElementById("easy");
 but2.addEventListener('click', () => 
 {
     but2.style.visibility = 'hidden';
+    const t0 = document.getElementById("instructions");
+    const t1 = document.getElementById("trackScore");
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("med");
     const modes3 = document.getElementById("diff");
     const brd = document.getElementById("board");
+    t0.style.visibility = 'hidden';
+    t1.style.visibility = 'visible';
     brd.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
+    mode = 0;
+    
 })
 
 //Hide medium button after it is pressed.
@@ -333,14 +322,19 @@ var but3 = document.getElementById("med");
 but3.addEventListener('click', () => 
 {
     but3.style.visibility = 'hidden';
+    const t0 = document.getElementById("instructions");
+    const t1 = document.getElementById("trackScore");
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("easy");
     const modes3 = document.getElementById("diff");
     const brd = document.getElementById("board");
+    t0.style.visibility = 'hidden';
+    t1.style.visibility = 'visible';
     brd.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
+    mode = 1;
 })
 
 //Hide Difficult button after it is pressed.
@@ -348,14 +342,19 @@ var but4 = document.getElementById("diff");
 but4.addEventListener('click', () => 
 {
     but4.style.visibility = 'hidden';
+    const t0 = document.getElementById("instructions");
+    const t1 = document.getElementById("trackScore");
     const rest = document.getElementById("restart");
     const modes2 = document.getElementById("easy");
     const modes3 = document.getElementById("med");
     const brd = document.getElementById("board");
+    t0.style.visibility = 'hidden';
+    t1.style.visibility = 'visible';
     brd.style.visibility = 'visible';
     rest.style.visibility = 'visible';
     modes2.style.visibility = 'hidden';
     modes3.style.visibility = 'hidden';
+    mode = 2;
 })
 
 //Function to restart game.

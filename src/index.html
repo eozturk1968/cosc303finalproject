@@ -11,6 +11,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Redaction+50:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="instructions">
+        <table>
+            <tr><th>How to play:</th></tr>
+            <tr><td>1) You start. Choose one of the bottom 6 pits to begin.</td></tr>
+            <tr><td>2) The AI goes after you.</td></tr>
+            <tr><td>3) If your last stone ends in your own store then you get to go again.</td></tr>
+            <tr><td>4) If your last stone ends in one of your pits that is empty, your opponent's stones in the pit directly accross are taken by you and placed in your store.</td></tr>
+            <tr><td>5) When either you or the AI has no stones left in any of their 6 pits, the opponent places all of their remianing stones in their store. The game is over.</td></tr>
+            <tr><td>6) The player with the most stones in their store at the end of the game wins.</td></tr>
+        </table>
+        <h1>Choose a difficulty mode and begin!</h1>
+    </div>
     <div id="board">
         <!--Twelve elements for the twelve holes and two scoring regions -->
         <div id="scoreRegion1"></div>
@@ -41,9 +53,9 @@
         </table>
     </div>
     <button id = "start" onclick="setTiles()">Start</button>
-    <button id = "easy" onclick="eMode()" class="mode">Easy</button>
-    <button id = "med" onclick="mMode()" class="mode">Medium</button>
-    <button id = "diff" onclick="hMode()" class="mode">Difficult</button>
+    <button id = "easy" class="mode">Easy</button>
+    <button id = "med" class="mode">Medium</button>
+    <button id = "diff" class="mode">Difficult</button>
     <button id = "restart" onclick="window.location.reload()">Restart</button>
     <button id = "again" onclick="keep()">Keep playing</button>
     <div id="win"></div>

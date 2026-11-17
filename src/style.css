@@ -113,8 +113,18 @@ body
     left: 30px;
     font-family: "Redaction 50", serif;
     font-size: 30px;
+    visibility: hidden;
 }
 
+#instructions
+{
+    visibility: hidden;
+    position: absolute;
+    top: 200px;
+    left: 150px;
+    font-size: 17px;
+    font-family: "Redaction 50", serif;
+}
 table
 {
     background-color: rgba(171, 48, 48, 0.274);
