@@ -3,7 +3,8 @@ let info; // User input variable on which pot they want to move
 let nums = [4,4,4,4,4,4,4,4,4,4,4,4]; //nums[0 - 5] = Player, nums[6 - 11] = AI
 let scoreRegion = [0,0]; //scoreRegion[0] = AI, scoreRegion[1] = Player
 let mode; //Difficulty mode. (Easy: 0, Medium: 1, Hard: 2)
-let winner; //Variable to store winner (0: AI, 1: Player);
+let winner; //Variable to store winner (0: AI, 1: Player, 2: Tie);
+let aiThinking = false; //Blocks player clicks while AI is moving.
 
 let userCount = 0; //Keep track of total number of wins.
 let AICount = 0; //Keep track of total number of wins.
@@ -166,8 +167,10 @@ function gamePlay()
     //Run computer player.
     //Move pieces and reprint again.
 
-    //TO-DO: Connect AI with this to allow AI to make move once user has gone.
+    //Ignore clicks while the AI is moving or on an empty pit.
+    if(aiThinking || nums[info] == 0) return;
 
+    let aiNext = false;
     let temp = info;
     let area = 1;
     let total = nums[info];
@@ -208,40 +211,82 @@ function gamePlay()
             scoreRegion[1] += nums[temp] + nums[11-temp];
             nums[temp] = 0;
             nums[11-temp] = 0;
-            setTimeout(setTiles, 200); 
-
-            //call AI to make move here.
+            setTimeout(setTiles, 200);
+            aiNext = true;
         }
 
-        //If the two other conditions are not met, still print the board and call AI. 
+        //If the two other conditions are not met, still print the board and call AI.
         else if(i == total-1)
         {
-            setTimeout(setTiles, 200); 
-            //call AI to make move here.
+            setTimeout(setTiles, 200);
+            aiNext = true;
         }
     }
 
-    //When game is over, count up stones and finish game. 
-    if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
+    //Check if game ended after the player's move. If not, let the AI move.
+    if(checkGameOver()) return;
+    if(aiNext)
     {
-        alert("Your pockets are empty! Opponent now places theirs in their own region.")
-        for(let i = 6; i < 12; i++)
-        {
-            scoreRegion[0] += nums[i];
-            nums[i] = 0;
-        }
-        setTiles();
-        if(scoreRegion[0] > scoreRegion[1])
-        {
-            winner = 0;
-        }
-        else if(scoreRegion[1] > scoreRegion[0])
-        {
-            winner = 1;
-        }
-        alert("Game is now over. Let's see who wins!")
-        gameWinner();
+        aiThinking = true;
+        setTimeout(aiTurn, 700); //Short pause so the player can see their move first.
     }
+}
+
+//Search depth for each difficulty (Easy: 0, Medium: 1, Hard: 2)
+const DEPTHS = [1, 3, 5];
+
+//Convert nums/scoreRegion into the 14-slot board ai.js uses:
+//[0-5] player pits, [6] player store, [7-12] AI pits, [13] AI store
+function toBoard()
+{
+    return [...nums.slice(0, 6), scoreRegion[1], ...nums.slice(6, 12), scoreRegion[0]];
+}
+
+function fromBoard(b)
+{
+    nums = [...b.slice(0, 6), ...b.slice(7, 13)];
+    scoreRegion = [b[13], b[6]];
+}
+
+//AI makes its move (and keeps going while it lands in its store).
+function aiTurn()
+{
+    const depth = DEPTHS[mode] ?? DEPTHS[0];
+    let board = toBoard();
+    let again = true;
+    while(again && !window.ai.is_game_over(board))
+    {
+        const { move } = window.ai.minimax(board, depth, false);
+        const result = window.ai.simulate_move(move, board, false);
+        board = result.new_board;
+        again = result.landed_in_store;
+    }
+    fromBoard(board);
+    setTiles();
+    aiThinking = false;
+    checkGameOver();
+}
+
+//If either side is empty: sweep remaining stones into stores and show winner.
+function checkGameOver()
+{
+    const playerEmpty = nums.slice(0, 6).every(n => n == 0);
+    const aiEmpty = nums.slice(6, 12).every(n => n == 0);
+    if(!playerEmpty && !aiEmpty) return false;
+
+    for(let i = 0; i < 6; i++) { scoreRegion[1] += nums[i]; nums[i] = 0; }
+    for(let i = 6; i < 12; i++) { scoreRegion[0] += nums[i]; nums[i] = 0; }
+    setTiles();
+
+    if(scoreRegion[0] > scoreRegion[1]) winner = 0;
+    else if(scoreRegion[1] > scoreRegion[0]) winner = 1;
+    else winner = 2;
+
+    setTimeout(() => {
+        alert("Game is now over. Let's see who wins!");
+        gameWinner();
+    }, 300);
+    return true;
 }
 
 //Make game winner visible
@@ -274,6 +319,13 @@ function gameWinner()
         const t5 = document.createTextNode("YOU WON!");
         t0.appendChild(t6);
         t4.appendChild(t5);
+        t3.appendChild(t0);
+        t3.appendChild(t4);
+    }
+    else if(winner == 2)
+    {
+        t0.appendChild(document.createTextNode("RESULTS:"));
+        t4.appendChild(document.createTextNode("IT'S A TIE!"));
         t3.appendChild(t0);
         t3.appendChild(t4);
     }

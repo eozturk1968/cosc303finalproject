@@ -59,6 +59,10 @@
     <button id = "restart" onclick="window.location.reload()">Restart</button>
     <button id = "again" onclick="keep()">Keep playing</button>
     <div id="win"></div>
+    <script type="module">
+        import * as ai from './ai.js';
+        window.ai = ai;
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
