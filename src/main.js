@@ -196,7 +196,7 @@ function gamePlay()
         //If user ends in their own pit they can go again.
         if(i == total-1 && area == 0)
         {
-            setTimeout(setTiles, 200);  
+            setTimeout(setTiles, 700);  
             //This check ensures that the alert is not printed on the last turn when there are actually no more moves to be made.
             if(nums[0] == 0 && nums[1] == 0 && nums[2] == 0 && nums[3] == 0 && nums[4] == 0 && nums[5] == 0)
                 break;
@@ -206,30 +206,33 @@ function gamePlay()
         }
 
         //Steal opponents when finishing in an empty store.
-        else if(i == total-1 && nums[temp] == 1 && nums[11-temp] > 0)
+
+        else if(i == total-1 && nums[temp] == 1 && nums[11-temp] > 0 && temp < 6)
         {
             scoreRegion[1] += nums[temp] + nums[11-temp];
             nums[temp] = 0;
             nums[11-temp] = 0;
-            setTimeout(setTiles, 200);
-            aiNext = true;
+            setTimeout(setTiles, 400);
+            setTimeout(aiNext = true, 700);
         }
 
         //If the two other conditions are not met, still print the board and call AI.
         else if(i == total-1)
         {
-            setTimeout(setTiles, 200);
-            aiNext = true;
+            setTimeout(setTiles, 400);
+            setTimeout(aiNext = true, 700);
         }
     }
 
+    
     //Check if game ended after the player's move. If not, let the AI move.
     if(checkGameOver()) return;
     if(aiNext)
     {
         aiThinking = true;
-        setTimeout(aiTurn, 700); //Short pause so the player can see their move first.
+        setTimeout(aiTurn, 1500); //Short pause so the player can see their move first.
     }
+        
 }
 
 //Search depth for each difficulty (Easy: 0, Medium: 1, Hard: 2)
@@ -254,15 +257,18 @@ function aiTurn()
     const depth = DEPTHS[mode] ?? DEPTHS[0];
     let board = toBoard();
     let again = true;
-    while(again && !window.ai.is_game_over(board))
-    {
-        const { move } = window.ai.minimax(board, depth, false);
-        const result = window.ai.simulate_move(move, board, false);
-        board = result.new_board;
-        again = result.landed_in_store;
-    }
+    const { move } = window.ai.minimax(board, depth, false);
+    const result = window.ai.simulate_move(move, board, false);
+    board = result.new_board;
+    again = result.landed_in_store;
     fromBoard(board);
     setTiles();
+    if(again)
+    {
+        alert("AI goes again! Wait for the move selection");
+        setTimeout(aiTurn, 1000);
+    }
+
     aiThinking = false;
     checkGameOver();
 }
@@ -283,9 +289,9 @@ function checkGameOver()
     else winner = 2;
 
     setTimeout(() => {
-        alert("Game is now over. Let's see who wins!");
+        //alert("Game is now over. Let's see who wins!");
         gameWinner();
-    }, 300);
+    }, 2000);
     return true;
 }
 
@@ -324,6 +330,8 @@ function gameWinner()
     }
     else if(winner == 2)
     {
+        userCount += 1;
+        AICount += 1;
         t0.appendChild(document.createTextNode("RESULTS:"));
         t4.appendChild(document.createTextNode("IT'S A TIE!"));
         t3.appendChild(t0);
