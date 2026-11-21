@@ -257,8 +257,8 @@ function aiTurn()
     const depth = DEPTHS[mode] ?? DEPTHS[0];
     let board = toBoard();
     let again = true;
-    const { move } = window.ai.minimax(board, depth, false);
-    const result = window.ai.simulate_move(move, board, false);
+    const { move } = window.ai.minimax(board, depth, true);
+    const result = window.ai.simulate_move(move, board, true);
     board = result.new_board;
     again = result.landed_in_store;
     fromBoard(board);
