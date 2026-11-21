@@ -48,4 +48,9 @@ Progress:
 - reach goals could be adding pruning to function to get even more depth for impossible mode
 - also possibility of machine learning type of thing to help determine best weights for evaluation function
 
+- 11/21/26
+- 2.5 hours
+- verified ai.js and ensure that it works properly
+- added bench.js, program simulates n games at depth d and prints results
+
 - Repo: https://github.com/eozturk1968/cosc303finalproject/tree/main/src 
