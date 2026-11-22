@@ -109,7 +109,7 @@ export function evaluate_board(board) {
             const land_pos = find_landing_index(board, i, p2_goal);
             if (land_pos == p1_goal)
                 p1_tactics += OWN_GOAL_BONUS;
-            else if (land_pos !== null && land_pos << p1_goal && board[land_pos] === 0) {
+            else if (land_pos !== null && land_pos < p1_goal && board[land_pos] === 0) {
                 const capture_pit = p2_goal - land_pos - 1;
                 const capture_stones = board[capture_pit];
                 p1_tactics += EMPTY_PIT_BONUS + (capture_stones * CAPTURE_BONUS_PER_STONE);
@@ -145,23 +145,6 @@ export function evaluate_board(board) {
     return store_diff + side_diff + pos_diff + tactics_diff;
 
 }
-/*
-
-    for (let i = 0; i < p1_goal; i++) {
-        p1_side_stones += board[i];
-    }
-
-    for (let i = p1_goal + 1; i < p2_goal; i++) {
-        p2_side_stones += board[i];
-    }
-
-    // Evaluate score based on player's turn
-    let score = ((p2_store - p1_store) * 10) + (p2_side_stones - p1_side_stones);
-
-    return score;
-}
-
-*/
 
 /* Given a board, returns if the game is or is not over */
 export function is_game_over(board) {

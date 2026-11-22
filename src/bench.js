@@ -5,7 +5,7 @@ import { minimax, is_game_over, simulate_move, evaluate_board } from "./ai.js";
 const INITIAL_BOARD = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 const P1_GOAL = 6;  // Human / Random side: pits 0..5, goal 6
 const P2_GOAL = 13; // AI (maximizing) side: pits 7..12, goal 13
-const AI_DEPTH = 5;
+const AI_DEPTH = 1;
 const GAMES = 100;
 
 function get_legal_pits(board, is_ai) {
