@@ -9,3 +9,9 @@ until either side empties out all 6 of their pits. The user with the most stones
 How to run: Click the link on the sidebar to access an online, hosted version of the game within the browser. No installed software or special hardware necessary. 
 
 How to run locally: Due to the nature of the javascript files it is best to run a localhost server in order for everything to function correctly. In a terminal within the project folder run (py -3 -m http.server) and then to access it through your browser go to (http://localhost:8000/src/index.html). This will allow you to run the code locally. 
+
+
+
+
+
+https://eozturk1968.github.io/cosc303finalproject/src/index.html
