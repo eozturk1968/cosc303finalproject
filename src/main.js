@@ -7,11 +7,11 @@ let winner; //Variable to store winner (0: AI, 1: Player, 2: Tie);
 let aiThinking = false; //Blocks player clicks while AI is moving.
 
 let userCount = 0; //Keep track of total number of wins.
-let AICount = 0; //Keep track of total number of wins.
+let aiCount = 0; //Keep track of total number of wins.
 
 //Initialize table variables to whatever the counts are.
 document.querySelector("#user").innerHTML = userCount;
-document.querySelector("#AI").innerHTML = AICount;
+document.querySelector("#AI").innerHTML = aiCount;
 
 //Function to set number of tiles based on nums array.
 function setTiles()
@@ -308,8 +308,8 @@ function gameWinner()
     t3.innerHTML = "";
     if(winner == 0)
     {
-        AICount += 1;
-        document.querySelector("#AI").innerHTML = AICount;
+        aiCount += 1;
+        document.querySelector("#AI").innerHTML = aiCount;
         const t5 = document.createTextNode("YOU LOST!");
         const t6 = document.createTextNode("RESULTS:");
         t0.appendChild(t6);
@@ -331,7 +331,7 @@ function gameWinner()
     else if(winner == 2)
     {
         userCount += 1;
-        AICount += 1;
+        aiCount += 1;
         t0.appendChild(document.createTextNode("RESULTS:"));
         t4.appendChild(document.createTextNode("IT'S A TIE!"));
         t3.appendChild(t0);
